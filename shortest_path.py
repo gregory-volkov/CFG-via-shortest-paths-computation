@@ -2,14 +2,24 @@ import numpy as np
 from relation import Relation
 
 
-# dist is a list of relations
-# h and v - matrices
 def single_edge_extend(dist, lattice_graph):
+    """
+    Operation SingleEdgeExtend, described in Lemma 3
+    :param dist: DIST matrix
+    :param lattice_graph: pair of 2 matrices: H and V
+    :return: None (changes DIST matrix)
+    """
     h, v = lattice_graph
     dist += (dist.T.dot(v)).T + dist.dot(h)
 
 
 def shortest_paths_algo(lattice_graph, corners, dist):
+    """
+    :param lattice_graph: pair of 2 matrices: H and V
+    :param corners: left upper and lower right coordinates of current quadrant
+    :param dist: DIST matrix
+    :return: None (changes DIST matrix)
+    """
     h, v = lattice_graph
     x, y = corners
     i1, j1 = x
@@ -43,6 +53,13 @@ def shortest_paths_algo(lattice_graph, corners, dist):
 
 
 def shortest_paths(n, h, v):
+    """
+    ShortestPaths algorithm, described in proof of Lemma 1
+    :param n: size of graph
+    :param h: H matrix
+    :param v: V matrix
+    :return: DIST matrix
+    """
     dist = np.array(
         [[Relation() for _ in range(n)] for _ in range(n)]
     )

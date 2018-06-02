@@ -1,6 +1,6 @@
 class Semiring(object):
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         raise NotImplementedError
 
     def __add__(self, other):
