@@ -7,6 +7,7 @@ prods = {
     'A': {'a'},
     'B': {'b'}
 }
+
 cfg = CFG(prods)
+
 print(valid(1, 4, 'aabb', cfg))
-print(valid(1, 4, 'aaba', cfg))

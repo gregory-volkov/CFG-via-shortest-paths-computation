@@ -2,11 +2,15 @@ from collections import defaultdict
 
 
 class CFG(object):
-
-    # A -> BC
-    # c['C'] = {(A, B)}
-    # b['B'] = {(A, C)}
+    """
+    If there is a rule
+    A -> BC
+    Then
+    (A, B) in set c['C']
+    (A, C) in set b['B']
+    """
     def __init__(self, prods):
+        self.nonterm_n = len(prods)
         self.nonterms = set()
         self.terms = set()
         self.term2nonterms = defaultdict(set)
